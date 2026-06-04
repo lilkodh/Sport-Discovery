@@ -49,7 +49,7 @@ export default function Home () {
   numColumns={2}
   keyExtractor={(item) => item.id}
   renderItem={({ item }) => (
-    <SportCard sport={item}/>
+    <SportCard sport={item}  sport ={sports}/>
   )}
   showsVerticalScrollIndicator={false}
   contentContainerStyle={{
