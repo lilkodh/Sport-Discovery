@@ -20,7 +20,7 @@ export default function SportCrad({sport}) {
 </View>
 
   <Text style={styles.title}>
-    Football
+     {sport.name}
   </Text>
 
   <Text style={styles.category}>
@@ -31,7 +31,7 @@ export default function SportCrad({sport}) {
   </Text>
 
   <Pressable style={styles.button}
- onPress={() => router.push("/details")}
+ onPress={() => router.push("details")}
 >
     <Text style={styles.buttonText}>
         

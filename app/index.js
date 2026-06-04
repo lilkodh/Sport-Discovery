@@ -2,33 +2,8 @@ import { View, StyleSheet , Text ,FlatList , Pressable , ScrollView} from "react
 import { useState } from "react";
 import Header from "../components/Header";
 import SportCard from "../components/SportCard";
+import { useSportStore } from "../store/sportStore";
 
-const sports = [
-  {
-    id: "1",
-    title: "Football",
-    category: "Team Sport",
-    image: require("../assets/football.jpg"),
-  },
-  {
-    id: "2",
-    title: "Basketball",
-    category: "Team Sport",
-   image: require("../assets/football.jpg"),
-  },
-  {
-    id: "3",
-    title: "Tennis",
-    category: "Individual",
-    image: require("../assets/football.jpg"),
-  },
-  {
-    id: "4",
-    title: "Swimming",
-    category: "Individual",
-    image: require("../assets/football.jpg"),
-  },
-];
 
 export default function Home () {
   const [showAll, setShowAll] = useState(false);
@@ -49,7 +24,7 @@ export default function Home () {
   numColumns={2}
   keyExtractor={(item) => item.id}
   renderItem={({ item }) => (
-    <SportCard sport={item}  sport ={sports}/>
+    <SportCard sport={item}/>
   )}
   showsVerticalScrollIndicator={false}
   contentContainerStyle={{

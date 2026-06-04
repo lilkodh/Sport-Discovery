@@ -1,4 +1,5 @@
 import { View, Text, Image, StyleSheet } from "react-native";
+import { getSports } from "../services/api";
 export default function Header() {
   return (
     <View style={styles.header}>

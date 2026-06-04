@@ -72,7 +72,7 @@ export default function Details() {
     />
   </View>
 </View>
- <Pressable style={styles.galleryButton} onPress={router.push("/gallery")}>
+ <Pressable style={styles.galleryButton}>
     <Ionicons name="images-outline" size={20} color="#fff" />
     <Text style={styles.galleryText}>Open Gallery</Text>
   </Pressable>
