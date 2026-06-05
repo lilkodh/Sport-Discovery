@@ -1,11 +1,15 @@
 import { View, Text, StyleSheet, Image, Pressable ,ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 export default function Details() {
+   const { sport } = useLocalSearchParams();
+
+  const item  = JSON.parse(sport);
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={require("../assets/image.png")} style={styles.image} />
+        <Image source={{ uri: item.image }} style={styles.image} />
         <Pressable style={styles.backButton} onPress={router.back}>
           <Ionicons name="arrow-back" size={22} color="#fff" />
         </Pressable>
@@ -21,20 +25,18 @@ export default function Details() {
             Full Description
           </Text>
           <Text style={styles.description}>
-            ​Basketball is a dynamic team sport for use to manage basketball in
-            developing basketball. Drdove the attacker of siroes and dynavio in
-            a secions.
+           {item.description}
           </Text>
           <View style={styles.line}></View>
           <View style={styles.con}>
             <View style={styles.bordeer}>
-              <Text style={styles.text}>TEAM SPORT</Text>
+              <Text style={styles.text}>   {item.category}</Text>
             </View>
             <View style={styles.bordeer}>
-              <Text style={styles.text}>11 VS 11</Text>
+              <Text style={styles.text}>{item.players}</Text>
             </View>
             <View style={styles.bordeer}>
-              <Text style={styles.text}>HIGH </Text>
+              <Text style={styles.text}>{item.difficulty}</Text>
             </View>
           </View>
           <View style={styles.line}></View>
@@ -45,8 +47,7 @@ export default function Details() {
             RULES
           </Text>
           <Text style={styles.description}>
-            ​No handball (except goalkeeper) ​ Ball must stay within the field ​
-            Score more goals than the opponent to win
+            {item.rules?.join("\n")}
           </Text>
           <View style={styles.equipmentContainer}>
   <Text style={styles.sectionTitle}>Equipment</Text>

@@ -32,7 +32,12 @@ export default function SportCrad({sport}) {
   </Text>
 
   <Pressable style={styles.button}
- onPress={() => router.push("details")}
+  onPress={() =>
+          router.push({
+            pathname: "/details",
+            params: { sport: JSON.stringify(sport) }
+          })
+        }
 >
     <Text style={styles.buttonText}>
         
