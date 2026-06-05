@@ -1,15 +1,27 @@
 import { View, StyleSheet , Text ,FlatList , Pressable , ScrollView} from "react-native";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import Header from "../components/Header";
 import SportCard from "../components/SportCard";
 import { useSportStore } from "../store/sportStore";
 
-
 export default function Home () {
-  const [showAll, setShowAll] = useState(false);
+ 
+const sports = useSportStore((state) => state.sports);
+const getSports = useSportStore((state) => state.getSports);
+
+useEffect(()=> {
+  getSports();
+},[])
+
+ 
+ const [showAll, setShowAll] = useState(false);
   const displayedSports = showAll
   ? sports
   : sports.slice(0, 2);
+
+
+
+
   return (
     <View style={styles.container}>
       <Header />
@@ -23,9 +35,10 @@ export default function Home () {
   data={displayedSports}
   numColumns={2}
   keyExtractor={(item) => item.id}
-  renderItem={({ item }) => (
+  renderItem={ ({ item }) => (
+    
     <SportCard sport={item}/>
-  )}
+  ) } 
   showsVerticalScrollIndicator={false}
   contentContainerStyle={{
     paddingBottom: 100, gap:10,

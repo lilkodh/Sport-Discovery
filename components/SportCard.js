@@ -1,12 +1,13 @@
 import { View, Text, StyleSheet ,Pressable, Image} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+
 export default function SportCrad({sport}) {
     return(
         <View style={styles.card}>
   <View style={styles.imageContainer}>
      <Image
-    source={require("../assets/football.jpg")}
+   source={{ uri:sport.image }}
     style={styles.image}
   />
 
@@ -24,10 +25,10 @@ export default function SportCrad({sport}) {
   </Text>
 
   <Text style={styles.category}>
-    Collective
+      {sport.category}
   </Text>
   <Text style={styles.discription}>
-    Most popular team sport...
+   {sport.shortDescription}
   </Text>
 
   <Pressable style={styles.button}
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
   borderRadius: 20,
   borderColor:"#59a84c",
   borderWidth:3,
-  gap:15,
+  gap:11,
   padding:5,
 },
 image:{
@@ -88,7 +89,6 @@ category: {
 
 button: {
   backgroundColor: "#59a84c",
-  margin:8,
   paddingVertical: 10,
   borderRadius: 10,
   alignItems: "center",
@@ -99,7 +99,7 @@ buttonText: {
   fontWeight: "600",
 },
 discription:{
-fontSize: 20,
+fontSize: 16,
   fontWeight: "bold",
   
 },

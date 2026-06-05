@@ -1,25 +1,15 @@
 import { create } from "zustand";
-import { getSports } from "../services/api";
-
+import { api } from "../services/api";
 export const useSportStore = create((set) => ({
   sports: [],
-  loading: false,
-  fetchSports: async () => {
-    set({ loading: true });
-
+  getSports: async () => {
     try {
-      const data = await getSports();
-
+      const response = await api.get("/sports");
       set({
-        sports: data,
-        loading: false,
+        sports: response.data,
       });
     } catch (error) {
       console.log(error);
-
-      set({
-        loading: false,
-      });
     }
   },
 }));
