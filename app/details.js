@@ -15,6 +15,19 @@ export default function Details() {
   const { sport } = useLocalSearchParams();
 
   const item = JSON.parse(sport);
+  const [favorite, setFavorite] = useState(false)
+  useEffect(()=> {
+    const loadFavorite = async () => {
+      const saved = await AsyncStorage.getItem(
+      `favorite_${item.id}`
+      );
+      if(saved !== null) {
+        setFavorite(JSON.parse(saved));
+
+      }
+    };
+    loadFavorite();
+  }, []);
  
   return (
     <View style={styles.container}>
@@ -24,8 +37,23 @@ export default function Details() {
           <Ionicons name="arrow-back" size={22} color="#fff" />
         </Pressable>
 
-        <Pressable style={styles.heartButton}>
-          <Ionicons name="heart-outline" size={22} color="#fff" />
+        <Pressable style={styles.heartButton}
+        onPress={async () => {
+          const newValue = !favorite;
+          setFavorite(newValue);
+          await AsyncStorage.setItem(
+           `favorite_${item.id}`, JSON.stringify(newValue)
+          );
+        }}
+        >
+          <Ionicons 
+          name={favorite ?"heart" : "heart-outline"
+
+           }
+         
+          size={22}
+          
+          color={favorite ? "red" : "white"} />
         </Pressable>
       </View>
       <ScrollView style={styles.detailsCard}>

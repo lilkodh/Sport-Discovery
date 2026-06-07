@@ -1,8 +1,13 @@
 import { View, Text, StyleSheet ,Pressable, Image} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { use, useEffect, useState  } from "react";
+
 
 export default function SportCrad({sport}) {
+  const [favorite, setFavorite] = useState(false);
+
+
     return(
         <View style={styles.card}>
   <View style={styles.imageContainer}>
@@ -12,11 +17,13 @@ export default function SportCrad({sport}) {
   />
 
    <View style={styles.overlay}>
+    <Pressable onPress={()=> setFavorite(!favorite)}>
     <Ionicons
-      name="heart-outline"
+      name={favorite ? "heart"   : "heart-outline" }
       size={30}
-      color="white"
+      color={favorite ? "red" : "white"}
     />
+    </Pressable>
   </View>
 </View>
 

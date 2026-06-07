@@ -8,7 +8,6 @@ export default function Home () {
  
 const sports = useSportStore((state) => state.sports);
 const getSports = useSportStore((state) => state.getSports);
-
 useEffect(()=> {
   getSports();
 },[])

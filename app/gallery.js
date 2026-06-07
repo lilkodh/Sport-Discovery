@@ -6,21 +6,22 @@ import {
   Image,
   ImageBackground,
   Pressable,
+  ScrollView 
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router, useLocalSearchParams } from "expo-router";
 import Swiper from "react-native-swiper";
-
 export default function Gallery() {
   const { sport } = useLocalSearchParams();
 
   const item = JSON.parse(sport);
 
   return (
+    
     <ImageBackground
-      source={{ uri: item.gallery.Image}}
+       source={require("../assets/logo.png")}
       style={styles.background}
-      blurRadius={5}
+      blurRadius={1}
     >
       <View style={styles.overlay}>
         <View style={styles.header}>
@@ -31,17 +32,16 @@ export default function Gallery() {
             <Ionicons name="arrow-back" size={22} color="#fff" />
           </Pressable>
 
-          <Pressable style={styles.circleButton}>
-            <Ionicons name="heart-outline" size={22} color="#fff" />
-          </Pressable>
         </View>
 
         <View style={styles.swiperContainer}>
           <Swiper
-            loop={true}
-            showsPagination={true}
-            dotStyle={styles.dot}
-            activeDotStyle={styles.activeDot}
+          loop={true}
+          horizontal={true}
+           autoplay={true}
+              showsPagination={true}
+                showsButtons={false}
+                paginationStyle={{ bottom: 10 }}
           >
             {item.gallery?.map((img, index) => (
               <View key={index} style={styles.slide}>
@@ -87,10 +87,10 @@ const styles = StyleSheet.create({
   },
 
   circleButton: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: "#2E7D32",
+    width: 60,
+    height: 40,
+    borderRadius: 100,
+    backgroundColor: "#27a42d",
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 2,
