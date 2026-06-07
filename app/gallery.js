@@ -11,6 +11,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { router, useLocalSearchParams } from "expo-router";
 import Swiper from "react-native-swiper";
+import { MotiPressable } from "moti/interactions";
 export default function Gallery() {
   const { sport } = useLocalSearchParams();
 
@@ -21,7 +22,7 @@ export default function Gallery() {
     <ImageBackground
        source={require("../assets/foo.jpg")}
       style={styles.background}
-      
+      blurRadius={5}
     >
       <View style={styles.overlay}>
         <View style={styles.header}>

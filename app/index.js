@@ -3,8 +3,8 @@ import { useState, useEffect} from "react";
 import Header from "../components/Header";
 import SportCard from "../components/SportCard";
 import { useSportStore } from "../store/sportStore";
-
-
+import { ActivityIndicator } from "react-native";
+import { Animated } from "react-native";
 export default function Home () {
  
 const sports = useSportStore((state) => state.sports);
@@ -19,9 +19,28 @@ useEffect(()=> {
   ? sports
   : sports.slice(0, 2);
 
+const [loading , setLoading ] = useState(true)
 
-
-
+useEffect(()=> {
+  const loadsports = async () => {
+    await getSports();
+    setLoading(false)
+  };
+  loadsports();
+},[])
+if(loading){
+  return(
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <ActivityIndicator size="large" color="#0E5A2D" />
+    </View>
+  )
+}
   return (
     <View style={styles.container}>
       <Header />
