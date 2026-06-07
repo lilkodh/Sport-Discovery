@@ -51,12 +51,14 @@ export default function Details() {
 
            }
          
-          size={22}
+          size={25}
           
           color={favorite ? "red" : "white"} />
         </Pressable>
       </View>
-      <ScrollView style={styles.detailsCard}>
+      <ScrollView style={styles.detailsCard}
+      showsVerticalScrollIndicator={false}
+      >
         <View style={styles.textcontainer}>
           <Text style={styles.title1}>
             <Ionicons name="document-text-outline" size={26} color="#fff" />

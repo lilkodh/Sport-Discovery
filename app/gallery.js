@@ -19,9 +19,9 @@ export default function Gallery() {
   return (
     
     <ImageBackground
-       source={require("../assets/logo.png")}
+       source={require("../assets/foo.jpg")}
       style={styles.background}
-      blurRadius={1}
+      
     >
       <View style={styles.overlay}>
         <View style={styles.header}>
@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
 
   overlay: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.55)",
+    
+
   },
 
   header: {
@@ -108,13 +109,16 @@ const styles = StyleSheet.create({
   },
 
   cardImage: {
-    width: "85%",
-    height: 550,
-    borderRadius: 30,
+    marginTop:50,
+    width: "80%",
+    height: 500,
+    borderRadius: 20,
+    borderWidth:5,
+    borderColor:"green",
   },
 
   dot: {
-    backgroundColor: "#888",
+    backgroundColor: "#ec0000",
     width: 8,
     height: 8,
     borderRadius: 4,

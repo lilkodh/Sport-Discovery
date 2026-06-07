@@ -4,6 +4,7 @@ import { router } from "expo-router";
 import { use, useEffect, useState  } from "react";
 
 
+
 export default function SportCrad({sport}) {
   const [favorite, setFavorite] = useState(false);
 

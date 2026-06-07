@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import SportCard from "../components/SportCard";
 import { useSportStore } from "../store/sportStore";
 
+
 export default function Home () {
  
 const sports = useSportStore((state) => state.sports);
