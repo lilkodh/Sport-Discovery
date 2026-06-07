@@ -9,10 +9,13 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useLocalSearchParams } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
 export default function Details() {
   const { sport } = useLocalSearchParams();
 
   const item = JSON.parse(sport);
+ 
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -66,7 +69,9 @@ export default function Details() {
               ))}
             </View>
           </View>
-          <Pressable
+         
+        </View>
+         <Pressable
   style={styles.galleryButton}
   onPress={() =>
     router.push({
@@ -80,7 +85,6 @@ export default function Details() {
   <Ionicons name="images-outline" size={20} color="#fff" />
   <Text style={styles.galleryText}>Open Gallery</Text>
 </Pressable>
-        </View>
       </ScrollView>
     </View>
   );
@@ -121,11 +125,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   detailsCard: {
-    borderColor: "white",
-    height: 600,
     backgroundColor: "#143D1E",
     borderRadius: 25,
-    marginTop: -150,
+    marginTop: -120,
+    
   },
   textcontainer: {
     paddingHorizontal: 40,
@@ -170,7 +173,7 @@ const styles = StyleSheet.create({
     fontWeight: "200",
   },
   equipmentContainer: {
-    gap: 30,
+    gap: 10,
   },
 
   sectionTitle: {
@@ -193,18 +196,21 @@ const styles = StyleSheet.create({
     borderColor: "#22FF00",
   },
   galleryButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#1e1e1e",
-    paddingVertical: 12,
-    paddingHorizontal: 15,
-    borderRadius: 12,
-    gap: 8,
-  },
+  backgroundColor: "#1f8a3d",
+  borderRadius: 30,
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  paddingVertical: 14,
+  paddingHorizontal: 80,
+  alignSelf: "center",
+  marginTop: 30,
+},
 
-  galleryText: {
-    color: "#fff",
-    fontSize: 14,
-    fontWeight: "600",
-  },
+galleryText: {
+  color: "#fff",
+  fontSize: 18,
+  fontWeight: "700",
+  letterSpacing: 0.5,
+},
 });
