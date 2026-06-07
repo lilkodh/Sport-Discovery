@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import SportCard from "../components/SportCard";
 import { useSportStore } from "../store/sportStore";
 import { ActivityIndicator } from "react-native";
-import { Animated } from "react-native";
 export default function Home () {
  
 const sports = useSportStore((state) => state.sports);

@@ -11,7 +11,6 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { router, useLocalSearchParams } from "expo-router";
 import Swiper from "react-native-swiper";
-import { MotiPressable } from "moti/interactions";
 export default function Gallery() {
   const { sport } = useLocalSearchParams();
 
@@ -37,11 +36,22 @@ export default function Gallery() {
 
         <View style={styles.swiperContainer}>
           <Swiper
-          loop={true}
+          
           horizontal={true}
-           autoplay={true}
+           autoplay={false}
               showsPagination={true}
                 showsButtons={false}
+         dotStyle={{
+          backgroundColor: "#ffffff",
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+
+         }}
+      activeDotStyle={{
+    backgroundColor: "#09f467",
+      }}
+          
                 paginationStyle={{ bottom: 10 }}
           >
             {item.gallery?.map((img, index) => (
@@ -110,34 +120,21 @@ const styles = StyleSheet.create({
   },
 
   cardImage: {
-    marginTop:50,
-    width: "80%",
-    height: 500,
-    borderRadius: 20,
+    marginTop:40,
+    width: "85%",
+  height:600,
+    borderRadius: 40,
     borderWidth:5,
     borderColor:"green",
   },
 
-  dot: {
-    backgroundColor: "#ec0000",
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-  },
-
-  activeDot: {
-    backgroundColor: "#fff",
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-  },
 
   swipeContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: 8,
-    marginBottom: 35,
+    marginBottom: 20,
   },
 
   swipeText: {
